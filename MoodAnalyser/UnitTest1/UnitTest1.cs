@@ -11,7 +11,7 @@ namespace UnitTest1
         public void TestMethod1()
         {
             //Arrange
-            MoodAnalysers moodAnalyser = new MoodAnalysers("I am in sad mood");
+            MoodAnalysers moodAnalyser = new MoodAnalysers();
             //Act
             var actual = moodAnalyser.AnalyserMethod();
             //Assert
@@ -25,11 +25,11 @@ namespace UnitTest1
         {
            
             //Arrange
-            MoodAnalysers moodAnalyser = new MoodAnalysers("I am in any mood");
+            MoodAnalysers moodAnalyser = new MoodAnalysers("I am in Happy mood");
             //Act
             var actual = moodAnalyser.AnalyserMethod();
             //Assert
-            Assert.AreEqual("Happy", actual);
+            Assert.AreEqual("Sad", actual);
         }
     }
 }
