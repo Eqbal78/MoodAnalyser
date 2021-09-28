@@ -7,6 +7,8 @@ namespace MoodAnalyser
     public class MoodAnalysers
     {
         public string message;
+
+       
         /// <summary>
         /// Parameterised Constructor
         /// </summary>
