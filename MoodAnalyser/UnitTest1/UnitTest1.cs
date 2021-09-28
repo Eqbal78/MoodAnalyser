@@ -18,18 +18,30 @@ namespace UnitTest1
             Assert.AreEqual("Sad", actual);
         }
 
-        
-        
+
+
         [TestMethod]
         public void TestMethod2()
         {
-           
+
             //Arrange
             MoodAnalysers moodAnalyser = new MoodAnalysers("I am in Happy mood");
             //Act
             var actual = moodAnalyser.AnalyserMethod();
             //Assert
-            Assert.AreEqual("Sad", actual);
+            Assert.AreEqual("HAPPY", actual);
+        }
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+
+            //Arrange
+            MoodAnalysers moodAnalyser = new MoodAnalysers(null);
+            //Act
+            var actual = moodAnalyser.AnalyserMethod();
+            //Assert
+            Assert.AreEqual("Happy", actual);
         }
     }
 }

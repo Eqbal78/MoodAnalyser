@@ -8,10 +8,14 @@ namespace MoodAnalyser
     {
         public string message;
 
+        /// <summary>
+        /// Non-Parameterised Constructor
+        /// </summary>
         public MoodAnalysers()
         {
             this.message = "I am in Sad mood";
         }
+
         /// <summary>
         /// Parameterised Constructor
         /// </summary>
@@ -27,16 +31,21 @@ namespace MoodAnalyser
         /// <returns></returns>
         public string AnalyserMethod()
         {
-            if (this.message.ToLower().Contains("sad"))
+            try
             {
-                return "Sad";
+                if (this.message.ToLower().Contains("sad"))
+                {
+                    return "Sad";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else if (this.message.ToLower().Contains("happy"))
+            catch
             {
-                return "Sad";
-            }
-            else
                 return "Happy";
+            }
         }
     }
 }
