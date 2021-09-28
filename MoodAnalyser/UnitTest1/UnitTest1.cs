@@ -32,16 +32,36 @@ namespace UnitTest1
             Assert.AreEqual("HAPPY", actual);
         }
 
+
         [TestMethod]
+        [ExpectedException(typeof(MoodAnalyserCustomException))]
         public void TestMethod3()
         {
+            try
+            {
+                
+                MoodAnalysers moodAnalyzer = new MoodAnalysers(" ");
+                string mood = moodAnalyzer.AnalyserMethod();
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                Assert.AreEqual("Mood should not be empty", e.Message);
+            }
+        }
 
-            //Arrange
-            MoodAnalysers moodAnalyser = new MoodAnalysers(null);
-            //Act
-            var actual = moodAnalyser.AnalyserMethod();
-            //Assert
-            Assert.AreEqual("Happy", actual);
+        [TestMethod]
+        public void TestMethod4()
+        {
+            try
+            {
+                MoodAnalysers moodAnalyzer = new MoodAnalysers(null);
+                string mood = moodAnalyzer.AnalyserMethod();
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                Assert.AreEqual("Mood should not be null", e.Message);
+            }
+
         }
     }
 }
