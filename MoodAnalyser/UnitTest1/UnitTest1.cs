@@ -8,7 +8,7 @@ namespace UnitTest1
     {
         
         [TestMethod]
-        public void TestMethod1()
+        public void GivenMoodHappy_ShouldReturnSad()
         {
             //Arrange
             MoodAnalysers moodAnalyser = new MoodAnalysers();
@@ -21,7 +21,7 @@ namespace UnitTest1
 
 
         [TestMethod]
-        public void TestMethod2()
+        public void GivenHAPPYMoodShouldReturnHappy()
         {
 
             //Arrange
@@ -32,10 +32,10 @@ namespace UnitTest1
             Assert.AreEqual("HAPPY", actual);
         }
 
-
+        //T.C 3.1
         [TestMethod]
-        [ExpectedException(typeof(MoodAnalyserCustomException))]
-        public void TestMethod3()
+      
+        public void GivenMoodEmpty_ShouldThrowException()
         {
             try
             {
@@ -49,8 +49,9 @@ namespace UnitTest1
             }
         }
 
+        //T.C 3.2
         [TestMethod]
-        public void TestMethod4()
+        public void GivenMoodNull_ShouldThrowException()
         {
             try
             {
@@ -63,5 +64,43 @@ namespace UnitTest1
             }
 
         }
+
+        //T.C 4.1
+        [TestMethod]
+        public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObject()
+        {
+            string message = null;
+            object expected = new MoodAnalysers(message);
+            object obj = MoodAnalyserReflection.CreateMoodAnalyser("MoodAnalyser.MoodAnalysers", "MoodAnalysers");
+            expected.Equals(obj);
+
+        }
+
+        //T.C 4.2
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalyserCustomException))]
+
+        public void GivenWrongClassName_ShouldThrowException()
+        {
+            string message = null;
+            object expected = new MoodAnalysers(message);
+            object obj = MoodAnalyserReflection.CreateMoodAnalyser("MoodAnalyser.moodanalysers", "MoodAnalysers");
+            expected.Equals(obj);
+
+        }
+
+        //T.C 4.3
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalyserCustomException))]
+        public void GivenClassConstructerNotProper_ShouldThrowException()
+        {
+            string message = null;
+            object expected = new MoodAnalysers(message);
+            object obj = MoodAnalyserReflection.CreateMoodAnalyser("MoodAnalyser.Moodanalysers", "MoodAnalysers(int)");
+            expected.Equals(obj);
+
+        }
+
+        
     }
 }
