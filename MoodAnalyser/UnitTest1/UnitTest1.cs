@@ -101,6 +101,37 @@ namespace UnitTest1
 
         }
 
-        
+        //T.C 5.1
+        [TestMethod]
+        public void GivenMoodAnalyser_ShouldReturnMoodAnalyserObject()
+        {
+            string message = null;
+            object expected = new MoodAnalysers(message);
+            object obj = MoodAnalyserReflection.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyser.MoodAnalysers", "MoodAnalysers", "SAD");
+            expected.Equals(obj);
+        }
+
+        // T.C 5.2
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalyserCustomException))]
+        public void GivenMoodAnalyserWrongClassName_ShouldThrowMoodAnalysisException()
+        {
+            string message = null;
+            object expected = new MoodAnalysers(message);
+            object obj = MoodAnalyserReflection.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyser.moodnalyser", "MoodAnalysers", "SAD");
+            expected.Equals(obj);
+        }
+
+        // T.C 5.3
+        [TestMethod]
+        [ExpectedException(typeof(MoodAnalyserCustomException))]
+        public void GivenMoodAnalyserClassNameWithNoProperConstructor_ShouldThrowMoodAnalysisException()
+        {
+            string message = null;
+            object expected = new MoodAnalysers(message);
+            object obj = MoodAnalyserReflection.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyser.MoodAnalysers", "moodanalyser", "SAD");
+            expected.Equals(obj);
+        }
+
     }
 }
